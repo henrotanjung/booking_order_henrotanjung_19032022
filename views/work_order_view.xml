@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_work_order_tree" model="ir.ui.view">
+        <field name="name">work.order.tree</field>
+        <field name="model">work.order</field>
+        <field name="priority">2</field>
+        <field name="arch" type="xml">
+            <tree string="Work Order">
+                <field name="name"/>
+                <field name="booking_order_ref"/>
+                <field name="service_team_id"/>
+                <field name="team_leader_id"/>
+                <field name="team_member_ids"/>
+                <field name="planned_start"/>
+                <field name="planned_end"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_work_order_form" model="ir.ui.view">
+            <field name="name">work.order.form</field>
+            <field name="model">work.order</field>
+            <field name="arch" type="xml">
+                <form string="Work Order" class="o_sale_order">
+                <header>
+                    <button name="start_work" string="Start Work" type="object" states="pending" class="btn-primary"/>
+                    <button name="end_work" string="End Work" type="object" states="in_progress" class="btn-primary"/>
+                    <button name="reset" states="in_progress" string="Reset" class="btn-primary o_sale_confirm" type="object" />
+                    <button name="%(booking_order_henrotanjung_19032022.action_view_cancel_work_order)d" string="Cancel" class="o_sale_confirm" type="action" />
+                    <field name="state" widget="statusbar" statusbar_visible="pending,in_progress,done,cancelled" />
+                </header>
+                <sheet>                    
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="booking_order_ref" />
+                            <field name="service_team_id" />
+                            <field name="team_leader_id"/>
+                            <field name="team_member_ids" widget="many2many_tags"/>
+                            <field name="planned_start" widget="date"/>
+                            <field name="planned_end" widget="date"/>
+                            <field name="description"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                    </group>
+                    
+                </sheet>
+                
+                </form>
+            </field>
+        </record>
+
+        <record id="view_work_order_calendar" model="ir.ui.view">
+            <field name="name">work.order.calendar</field>
+            <field name="model">work.order</field>
+            <field name="arch" type="xml">
+                <calendar string="Work Order" date_start="date_start">
+                    <field name="name"/>
+                    <field name="booking_order_ref"/>
+                    <field name="service_team_id"/>
+                    <field name="team_leader_id"/>
+                    <field name="team_member_ids"/>
+                    <field name="planned_start"/>
+                    <field name="planned_end"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="state"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="work_order_form_action" model="ir.actions.act_window">
+            <field name="name">Work Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">work.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban,calendar,graph,pivot</field>
+            <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a new unit of measure category.
+            </p><p>
+                Units of measure belonging to the same category can be
+                converted between each others. For example, in the category
+                <i>'Time'</i>, you will have the following units of measure:
+                Hours, Days.
+            </p>
+            </field>
+        </record>
+    
+</odoo>

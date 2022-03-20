@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="report_work_order">
+    <t t-call="report.html_container">
+        <t t-set="data_report_margin_top" t-value="12"/>
+        <t t-set="data_report_header_spacing" t-value="9"/>
+        <t t-set="data_report_dpi" t-value="110"/>
+        <t t-foreach="docs" t-as="o">
+
+            <t t-call="report.internal_layout">
+                <div class="page">
+                    <table class="table table-bordered" border="2">
+                        <tbody>
+                            <tr style="font-weight: bold;">
+                                <td colspan="24">
+                                <span t-esc="o.booking_order_ref.name" />
+                                </td>
+                            </tr>
+                            <tr style="font-weight: bold;">
+                                <td colspan="6">
+                                    Team Name
+                                </td>
+                                <td colspan="6">
+                                    <span style="color: white;" t-esc="'..'"/>
+                                    <span t-esc="o.service_team_id.name"/>
+                                </td>
+                                <td colspan="6">
+                                    Customer
+                                </td>
+                                <td colspan="6">
+                                    <span style="color: white;" t-esc="'..'"/>
+                                    <span t-esc="o.service_team_id.name"/>
+                                </td>
+                                
+                            </tr>
+                            <tr style="font-weight: bold;">
+                                <td colspan="6" >
+                                    Booking Order Ref
+                                </td>
+                                <td colspan="6">
+                                    <span t-esc="o.booking_order_ref.name" />
+                                </td>
+                                <td colspan="6">
+                                    Date
+                                </td>
+                                <td colspan="6">
+                                    <span t-esc="o.planned_start"/>
+                                    -
+                                    <span t-esc="o.planned_end"/>
+                                </td>
+                            </tr>
+                            <tr style="font-weight: bold">
+                            
+                                <td colspan="24">
+                                    Notes:
+                                    <span t-esc="o.description  " />
+                                </td>
+                            </tr>
+                            <tr style="font-weight: bold">
+                                <td colspan="24">
+                                    Signature:
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+</odoo>

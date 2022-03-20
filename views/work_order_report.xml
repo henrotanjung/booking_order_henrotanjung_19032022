@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <report 
+            id="work_order_report"
+            model="work.order"
+            string="Work Order"
+            report_type="qweb-pdf"
+            name="booking_order_henrotanjung_19032022.report_work_order"
+            file="booking_order_henrotanjung_19032022.report_work_order"
+        />
+
+    </data>
+</odoo>

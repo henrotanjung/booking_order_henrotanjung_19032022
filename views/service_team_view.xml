@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_service_team_form" model="ir.ui.view">
+            <field name="name">service.team.form</field>
+            <field name="model">service.team</field>
+            <field name="arch" type="xml">
+                <form string="Service Team" class="o_sale_order">
+                <sheet>   
+                    <group>
+                        <field name="name" />
+                        <field name="team_leader_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Team Members">
+                            <field name="team_member_ids" mode="tree,kanban" >
+                                <tree string="Team Member" editable="bottom">
+                                    <field name="name" />
+                                    <field name="email"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                    </notebook>
+                    
+                </sheet>
+                
+                </form>
+            </field>
+        </record>        
+    
+</odoo>
